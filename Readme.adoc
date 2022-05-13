@@ -18,10 +18,18 @@ For example: `api-user-id@my-appd-instance`. Required role: _Applications & Dash
 The API Key
 
 
-== Run as docker
+== Build the docker image
+
+NOTE: This _Dockerfile_ is using https://hub.docker.com/r/appdynamics/machine-agent[appdynamics/machine-agent]  as a base, installs python, copies the files and build the python environment.
 
 
-NOTE: Ensure the directory `.venv` is not existing.
+[source, sh]
+----
+docker build -t appdynamics/machine-agent-python:alpine-latest .
+----
+
+
+== Run the docker container
 
 [source, sh]
 ----
@@ -36,9 +44,8 @@ docker run -d \
     -e APPDYNAMICS_AGENT_TIER_NAME=monitor \
     -e APPDYNAMICS_AGENT_NODE_NAME=monitor \
     -e APPDYNAMICS_SIM_ENABLED=true \
-    -v ${PWD}:/opt/appdynamics/monitors/PythonSelfMonitoring \
     --name appd-machine-agent \
-    appdynamics/machine-agent:22.4.0
+    appdynamics/machine-agent-python:alpine-latest
 ----
 
 
