@@ -1,7 +1,27 @@
 = AppDynamics Machine Agent Python Self Monitoring
 
 
+== Update Environment
+
+Configure the environment in file `config.ini`
+
+* *controller_url*
++ 
+For example: `https://my-appd-instance.saas.appdynamics.com:443/controller`
+
+* *controller_client_id*
++ 
+For example: `api-user-id@my-appd-instance`. Required role: _Applications & Dashboards Viewer (Default)_
+
+* *controller_client_secret*
++ 
+The API Key
+
+
 == Run as docker
+
+
+NOTE: Ensure the directory `.venv` is not existing.
 
 [source, sh]
 ----
